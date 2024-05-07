@@ -8,15 +8,16 @@ var username = ''
 var authToken = ''
 var repositories = []
 
+// captures command line arguments into variables
 function getArgs() {
     path = argv[2]
     username = argv[3]
     authToken = argv[4]
 }
 
-// Retrieves a list of repos associated user a user's account
+// retrieves a list of repos associated with a user's account
 async function getRepos() {
-    // Github authentication
+    // authenticate with GitHub
     const octokit = new Octokit({
         auth: authToken
     });
@@ -34,6 +35,7 @@ async function getRepos() {
     });
 }
 
+// clones each repo associated with a user's account
 function cloneRepos() {
     var command = ''
 
